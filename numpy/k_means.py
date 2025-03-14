@@ -50,4 +50,3 @@ if __name__ == "__main__":
     plt.ylabel("Y")
     plt.legend()
     plt.show()
-
