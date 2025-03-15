@@ -12,8 +12,7 @@ def relu(X):
 
 
 def cross_entropy_loss(y_pred, y):
-    m = y.shape[0]
-    return -np.sum(y * np.log(y_pred + 1e-8)) / m
+    return -np.mean(y * np.log(y_pred + 1e-8))
 
 
 class MLP:
