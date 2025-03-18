@@ -6,3 +6,7 @@ def softmax(X):
     softmax_X = X_exp / np.sum(X_exp)
     return softmax_X
     
+
+if __name__ == '__main__':
+    X = [[11, 12, 13]]
+    print(softmax(X))

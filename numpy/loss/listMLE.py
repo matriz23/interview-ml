@@ -1,10 +1,11 @@
 import numpy as np
 
+
 def listMLE_loss(y_true, y_pred):
     """
     Computes the ListMLE loss for a given set of true and predicted values.
 
-    ListMLE is a listwise learning-to-rank loss function that optimizes the 
+    ListMLE is a listwise learning-to-rank loss function that optimizes the
     likelihood of the correct ranking of items.
 
     Args:
@@ -20,7 +21,7 @@ def listMLE_loss(y_true, y_pred):
         loss = listMLE_loss(y_true, y_pred)
     """
 
-    indices = np.argsort(-y_true, axis=-1, kind='stable')
+    indices = np.argsort(-y_true, axis=-1, kind="stable")
 
     sorted_y_pred = np.take_along_axis(y_pred, indices, axis=-1)
 
@@ -33,6 +34,8 @@ def listMLE_loss(y_true, y_pred):
     loss = (-sorted_y_pred + log_cum_sum_exp).sum(axis=-1)
     return np.mean(loss)
 
-y_true = np.array([[3.0, 2.0, 4.0]])
-y_pred = np.array([[0.5, 0.3, 1.2]])
-print(listMLE_loss(y_true, y_pred))  
+
+if __name__ == "__main__":
+    y_true = np.array([[3.0, 2.0, 4.0]])
+    y_pred = np.array([[0.5, 0.3, 1.2]])
+    print(listMLE_loss(y_true, y_pred))
